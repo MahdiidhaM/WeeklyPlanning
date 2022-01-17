@@ -1,0 +1,38 @@
+﻿@page
+@model WeeklyPlanning.Pages.Works.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Work</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Work.ID" />
+            <div class="form-group">
+                <label asp-for="Work.WorkDo" class="control-label"></label>
+                <input asp-for="Work.WorkDo" class="form-control" />
+                <span asp-validation-for="Work.WorkDo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Work.WorkUser" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Work.Data" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+

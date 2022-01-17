@@ -1,0 +1,236 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@using Microsoft.AspNetCore.Identity;
+@using WeeklyPlanning.Data;
+@using WeeklyPlanning.Areas.Identity.Data;
+
+
+@inject SignInManager<WeeklyPlanningUser> SignInManager;
+@inject UserManager<WeeklyPlanningUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    
+
+            <form method="post" class="row g-3 w-50 m-auto">
+        <div>
+                <div>
+                    <div class="col-auto">
+                    <input required asp-for="Doing.WorkDo" class="form-control" id="inputPassword2" placeholder="Enter your schedule">
+                    <div class="text-center pt-2">
+                        <select class="select" name="name">
+                        <option>Day</option>
+                        <option value="0">Saturday</option>
+                        <option value="1">Sunday</option>
+                        <option value="2">Monday</option>
+                        <option value="3">Tuesday</option>
+                        <option value="4">Wednesday</option>
+                        <option value="5">Thursday</option>
+                        <option value="6">Friday</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-auto pt-2" style="justify-content: center;display: flex;">
+                    <button type="submit" class="btn btn-dark mb-3">Record</button>
+                </div>
+                </div>
+        </div>
+            </form> 
+    @if(Model.Exist){
+        <div class="row m-auto" style="justify-content:center;border: 1px solid #00000061;border-radius: 5px;">
+            <div class="col-1 text-center p-0 Day" style="background-color: #00ff00bf;">
+                @foreach (var i in Model.Works)
+                    {
+                            <div class="changecolor" style="border-bottom: 1px solid #0000001c;">
+                                <span style="font-size:15px;font-weight: 601;">
+                                @Html.DisplayFor(modelitem => i.Data)
+                            </span>
+                            <br />
+                            <span style="font-size:20px;">
+                                 @Html.DisplayFor(modelitem => i.WorkDo)
+                            </span>
+                        <div class="row m-auto" style="font-size: 14px; padding-top: 20px ;">
+                            <div class="col-6">
+                                <a asp-page="./Delete" asp-route-id=@i.ID>Done</a>
+                            </div>
+                            <div class="col-6">
+                                <a asp-page="/Works/Edit" asp-route-id=@i.ID>Update</a>
+                            </div>
+
+                        </div>
+                        <br />
+                            </div>
+                    }
+            </div>
+            <div class="col-1 text-center p-0 Day" style="background-color: #00ff008c;">
+
+                @foreach (var i in Model.First)
+                    {
+                            <div class="changecolor" style="border-bottom: 1px solid #0000001c;">
+                                <span style="font-size:15px;font-weight: 601;">
+                                @Html.DisplayFor(modelitem => i.Data)
+                            </span>
+                            <br />
+                            <span style="font-size:20px;">
+                                 @Html.DisplayFor(modelitem => i.WorkDo)
+                            </span>
+                        <div class="row m-auto" style="font-size: 14px; padding-top: 20px ;">
+                            <div class="col-6">
+                                <a asp-page="./Delete" asp-route-id=@i.ID>Done</a>
+                            </div>
+                            <div class="col-6">
+                                <a asp-page="/Works/Edit" asp-route-id=@i.ID>Update</a>
+                            </div>
+
+                        </div>
+                        <br />
+                            </div>
+                    }
+            </div>
+            <div class="col-1 text-center p-0 Day" style="background-color: #00ff005e;">
+
+                @foreach (var i in Model.Second)
+                    {
+                            <div class="changecolor" style="border-bottom: 1px solid #0000001c;">
+                                <span style="font-size:15px;font-weight: 601;">
+                                @Html.DisplayFor(modelitem => i.Data)
+                            </span>
+                            <br />
+                            <span style="font-size:20px;">
+                                 @Html.DisplayFor(modelitem => i.WorkDo)
+                            </span>
+                        <div class="row m-auto" style="font-size: 14px; padding-top: 20px ;">
+                            <div class="col-6">
+                                <a asp-page="./Delete" asp-route-id=@i.ID>Done</a>
+                            </div>
+                            <div class="col-6">
+                                <a asp-page="/Works/Edit" asp-route-id=@i.ID>Update</a>
+                            </div>
+
+                        </div>
+                        <br />
+                            </div>
+                    }
+            </div>
+            <div class="col-1 text-center p-0 Day" style = "background-color: #00ff003d;">
+
+                @foreach (var i in Model.Third)
+                   {
+                            <div class="changecolor" style="border-bottom: 1px solid #0000001c;">
+                                <span style="font-size:15px;font-weight: 601;">
+                                @Html.DisplayFor(modelitem => i.Data)
+                            </span>
+                            <br />
+                            <span style="font-size:20px;">
+                                 @Html.DisplayFor(modelitem => i.WorkDo)
+                            </span>
+                        <div class="row m-auto" style="font-size: 14px; padding-top: 20px ;">
+                            <div class="col-6">
+                                <a asp-page="./Delete" asp-route-id=@i.ID>Done</a>
+                            </div>
+                            <div class="col-6">
+                                <a asp-page="/Works/Edit" asp-route-id=@i.ID>Update</a>
+                            </div>
+
+                        </div>
+                        <br />
+                            </div>
+                    }
+            </div>
+            <div class="col-1 text-center p-0 Day" style="background-color: #00ff0029;">
+
+                @foreach (var i in Model.Four)
+                    {
+                            <div class="changecolor" style="border-bottom: 1px solid #0000001c;">
+                                <span style="font-size:15px;font-weight: 601;">
+                                @Html.DisplayFor(modelitem => i.Data)
+                            </span>
+                            <br />
+                            <span style="font-size:20px;">
+                                 @Html.DisplayFor(modelitem => i.WorkDo)
+                            </span>
+                        <div class="row m-auto" style="font-size: 14px; padding-top: 20px ;">
+                            <div class="col-6">
+                                <a asp-page="./Delete" asp-route-id=@i.ID>Done</a>
+                            </div>
+                            <div class="col-6">
+                                <a asp-page="/Works/Edit" asp-route-id=@i.ID>Update</a>
+                            </div>
+
+                        </div>
+                        <br />
+                            </div>
+                    }
+            </div>
+            <div class="col-1 text-center p-0 Day" style=" background-color: #00ff0014;">
+
+                @foreach (var i in Model.Five)
+                   {
+                            <div class="changecolor" style="border-bottom: 1px solid #0000001c;">
+                                <span style="font-size:15px;font-weight: 601;">
+                                @Html.DisplayFor(modelitem => i.Data)
+                            </span>
+                            <br />
+                            <span style="font-size:20px;">
+                                 @Html.DisplayFor(modelitem => i.WorkDo)
+                            </span>
+                        <div class="row m-auto" style="font-size: 14px; padding-top: 20px ;">
+                            <div class="col-6">
+                                <a asp-page="./Delete" asp-route-id=@i.ID>Done</a>
+                            </div>
+                            <div class="col-6">
+                                <a asp-page="/Works/Edit" asp-route-id=@i.ID>Update</a>
+                            </div>
+
+                        </div>
+                        <br />
+                            </div>
+                    }
+            </div>
+            <div class="col-1 text-center p-0 Day" style="background-color: #0f00;">
+
+                @foreach (var i in Model.Six)
+                   {
+                            <div class="changecolor" style="border-bottom: 1px solid #0000001c;">
+                                <span style="font-size:15px;font-weight: 601;">
+                                @Html.DisplayFor(modelitem => i.Data)
+                            </span>
+                            <br />
+                            <span style="font-size:20px;">
+                                 @Html.DisplayFor(modelitem => i.WorkDo)
+                            </span>
+                        <div class="row m-auto" style="font-size: 14px; padding-top: 20px ;">
+                            <div class="col-6">
+                                <a asp-page="./Delete" asp-route-id=@i.ID>Done</a>
+                            </div>
+                            <div class="col-6">
+                                <a asp-page="/Works/Edit" asp-route-id=@i.ID>Update</a>
+                            </div>
+
+                        </div>
+                        <br />
+                            </div>
+                    }
+            </div>
+        </div>
+        }
+        else{
+            <div class="container text-center">
+                <h2>
+                    Please enter your schedule 
+                </h2>
+            </div>
+            }
+}
+else
+{
+    <div class="contaner text-center">
+        <h3>Please <a asp-page="/Account/Login" asp-area="Identity">Login</a> first </h3>
+        
+    </div>
+}
