@@ -55,9 +55,12 @@ namespace WeeklyPlanning.Pages
         public Work Doing { get; set; }
         public int count { get; set; }
         public IActionResult OnPostAsync(int name)
-	{   
+	{
             int main = DateTime.Now.Date.Day - 1;
             DateTime dateValue = DateTime.Now.Date;
+            int Month = DateTime.Now.Month;
+            Console.WriteLine(Month);
+            Console.WriteLine("------------------------");
             int total = (int)dateValue.DayOfWeek;
             Console.WriteLine(total);
             var userss = usermanage.GetUserName(User);
@@ -72,11 +75,32 @@ namespace WeeklyPlanning.Pages
             {
                 end = 7 - Math.Abs(name - total);
             }
+            int Day = main + end;
+            if (Day == 32)
+            {
+                Day = 1;
+                Month += 1;
+            }
+            else if( Day == 33)
+            {
+                Day = 2;
+                Month += 1;
+            }
+            else if (Day == 34)
+            {
+                Day = 3;
+                Month += 1;
+            }
+            else if (Day == 35)
+            {
+                Day = 3;
+                Month += 1;
+            }
             var savawork = new Work()
             {
                 WorkUser = userss,
                 WorkDo = Doing.WorkDo,
-                Data = DateTime.Parse($"1-{main + end}-2022"),
+                Data = DateTime.Parse($"{Month}-{Day}-2022"),
             };
             _context.Work.Add(savawork);
             _context.SaveChanges();
