@@ -58,11 +58,11 @@ namespace WeeklyPlanning.Pages
 	{
             DateTime dateValue = DateTime.Now.Date;
             Console.WriteLine("------------------------");
-            Console.WriteLine("------------------------");
             int total = (int)dateValue.DayOfWeek;
             Console.WriteLine(total);
+	    
+	    //Get User
             var userss = usermanage.GetUserName(User);
-
             //Get date of the next days
             int end;
             if (name - total > 0)
