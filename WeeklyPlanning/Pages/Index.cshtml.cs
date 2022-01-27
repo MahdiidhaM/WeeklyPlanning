@@ -20,7 +20,7 @@ namespace WeeklyPlanning.Pages
             usermanage = userManager;
             signmange = signInManager;
         }
-	public IList<Work> Works { get; set; }
+    public IList<Work> Works { get; set; }
     public IList<Work> WeekDays { get; set; }
     public IList<Work> First { get; set; }
     public IList<Work> Second { get; set; }
@@ -51,7 +51,7 @@ namespace WeeklyPlanning.Pages
             }
 	    return Page();
         }
-	    [BindProperty]
+	[BindProperty]
         public Work Doing { get; set; }
         public int count { get; set; }
         public IActionResult OnPostAsync(int name)
